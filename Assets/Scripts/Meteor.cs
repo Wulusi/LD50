@@ -39,7 +39,7 @@ public class Meteor : MonoBehaviour
 
         if(player != null)
         {
-            Destroy(player.gameObject);
+            player.killPlayer();
         }
     }
 }

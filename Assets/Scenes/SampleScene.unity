@@ -733,7 +733,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 383496052803879223, guid: 11b2f07e5b44ee34ca150d6cc0d2e8e2, type: 3}
       propertyPath: isDebug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 383496052803879223, guid: 11b2f07e5b44ee34ca150d6cc0d2e8e2, type: 3}
       propertyPath: scoreDisplay
@@ -869,6 +869,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1352531990, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
+      propertyPath: fireRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1352531991, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: m_Size.x
       value: 0.75
