@@ -614,6 +614,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1276700065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 659213109634967907, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+  m_PrefabInstance: {fileID: 2451740852353836499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b7b1ad338af8409877c1b5d8ce303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651622673
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +875,10 @@ PrefabInstance:
       propertyPath: timerDisplay
       value: 
       objectReference: {fileID: 684906542}
+    - target: {fileID: 383496052803879223, guid: 11b2f07e5b44ee34ca150d6cc0d2e8e2, type: 3}
+      propertyPath: meteorSpawner
+      value: 
+      objectReference: {fileID: 1276700065}
     - target: {fileID: 2979822357774872055, guid: 11b2f07e5b44ee34ca150d6cc0d2e8e2, type: 3}
       propertyPath: m_Name
       value: GameManager

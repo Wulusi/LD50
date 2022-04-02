@@ -25,10 +25,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject PlayerPrefab;
 
+    [SerializeField]
+    GameObject GameOverScreen;
+
+    [SerializeField]
+    MeteorSpawner meteorSpawner;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
+
+        if (GameOverScreen != null)
+        {
+            GameOverScreen.SetActive(false);
+        }
     }
 
     public bool isDebuggingEnabled()
@@ -51,6 +61,20 @@ public class GameManager : MonoBehaviour
 
         time = Time.time;
 
-        timerDisplay.SetText(string.Format("Time:{0}", time.ToString("F2")));
+        timerDisplay.SetText(string.Format("Time: {0}", time.ToString("F2")));
+    }
+
+    public void GameOverState()
+    {
+        if(GameOverScreen != null)
+        {
+            Time.timeScale = 0;
+            GameOverScreen.SetActive(true);
+        }
+    }
+    public void IncreaseScore()
+    {
+        score += 10;
+        scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
     }
 }

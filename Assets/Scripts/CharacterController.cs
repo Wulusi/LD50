@@ -41,14 +41,15 @@ public class CharacterController : MonoBehaviour
     private bool isLastInputNegative;
     private bool routineActive;
     private bool moveUpdate;
-
     private Vector3 PlayerInput;
     private float LastPlayerInput;
-
     private Rigidbody2D _rb;
+
+    private GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
+        GM = FindObjectOfType<GameManager>();
         Cursor.visible = false;
         characterController = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody2D>();
@@ -147,7 +148,8 @@ public class CharacterController : MonoBehaviour
     }
     public void ShootProjecTile()
     {
-        Instantiate(projectile, gunBarrel.transform.position, gunBarrel.transform.rotation);
+        GameObject bullet = Instantiate(projectile, gunBarrel.transform.position, gunBarrel.transform.rotation);
+        bullet.GetComponent<ProjectileBehaviour>().setGM(GM);
     }
 
     public void killPlayer()

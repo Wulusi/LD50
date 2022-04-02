@@ -9,6 +9,9 @@ public class Meteor : MonoBehaviour
     private int speed, lifeTime;
 
     private float TimeStamp;
+
+    [SerializeField]
+    private bool containsBonus;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +46,10 @@ public class Meteor : MonoBehaviour
             player.killPlayer();
             Destroy(gameObject);
         }
+    }
+
+    public void DestroyMeteor()
+    {
+        Destroy(gameObject);
     }
 }
