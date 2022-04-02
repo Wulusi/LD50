@@ -33,6 +33,7 @@ public class Meteor : MonoBehaviour
         if(tile != null)
         {
             tile.DamageGroundTile();
+            Destroy(gameObject);
         }
 
         CharacterController player = collision.gameObject.GetComponent<CharacterController>();
@@ -40,6 +41,7 @@ public class Meteor : MonoBehaviour
         if(player != null)
         {
             player.killPlayer();
+            Destroy(gameObject);
         }
     }
 }

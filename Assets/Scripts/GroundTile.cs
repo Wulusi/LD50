@@ -22,6 +22,8 @@ public class GroundTile : MonoBehaviour
 
     [SerializeField]
     GameObject DamagedTileSprite;
+
+    private bool isRoutineActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,26 +34,31 @@ public class GroundTile : MonoBehaviour
     {
         if (groundTileHealth <= 0)
         {
-            blocker.isTrigger = true;
+            blocker.enabled = false;
             sprite.enabled = false;
             DamagedTileSprite.SetActive(false);
 
             if (isDebuggingMode)
             {
-                StartCoroutine(autoRestore());
+                if (!isRoutineActive)
+                {
+                    StartCoroutine(autoRestore());
+                }
             }
         }
         else
         {
-            blocker.isTrigger = false;
+            blocker.enabled = true;
             sprite.enabled = true;
         }
     }
 
     public void ResetGroundTile()
     {
-        groundTileHealth = 2;
         DamagedTileSprite.SetActive(false);
+        Debug.Log("Reset tile" + gameObject.name);
+        groundTileHealth = 2;
+        isRoutineActive = false;
     }
 
     public void DamageGroundTile()
@@ -66,6 +73,7 @@ public class GroundTile : MonoBehaviour
 
     private IEnumerator autoRestore()
     {
+        isRoutineActive = true;
         yield return new WaitForSeconds(autoRestoreTimer);
         ResetGroundTile();
     }

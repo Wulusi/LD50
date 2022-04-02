@@ -16,7 +16,7 @@ public class MeteorSpawner : MonoBehaviour
     private GameObject meteor;
 
     [SerializeField]
-    private int spawnCoolDown;
+    private float spawnCoolDown;
     private float timeStamp = 0;
     // Start is called before the first frame update
     void Start()
