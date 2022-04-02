@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class UnityCustomEvent : UnityEngine.Events.UnityEvent
@@ -29,6 +27,7 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField]
     private float fireRate;
+    private float fireTimer;
 
     [SerializeField]
     private Animator animator;
@@ -85,6 +84,7 @@ public class CharacterController : MonoBehaviour
         }
 
         characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);
+
         //GetMoveUpdate();
         //Movement();
         //_rb.MovePosition(transform.position + PlayerInput.normalized * HVelocity);
@@ -94,7 +94,8 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            CoolDown(fireRate, fireAtTarget);
+            //CoolDown(fireRate, fireAtTarget);
+            FireBullet();
         }
     }
     private void GetMoveUpdate()
@@ -172,6 +173,14 @@ public class CharacterController : MonoBehaviour
             }
             routineActive = false;
             eventToInvoke?.Invoke();
+        }
+    }
+    private void FireBullet()
+    {
+        if (fireTimer < Time.time)
+        {
+            fireTimer = Time.time + fireRate;
+            fireAtTarget?.Invoke();
         }
     }
 }
