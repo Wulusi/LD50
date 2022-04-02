@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 4.33
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -279,6 +279,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 942731358575348275, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731358575348275, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731358575348275, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359733709639, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359733709639, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359733709639, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359901202886, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359901202886, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731359901202886, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360092182366, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360092182366, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360092182366, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360614178206, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360614178206, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942731360614178206, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3472384099116509210, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: m_Name
       value: GroundTiles
@@ -293,7 +353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907617758822581692, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9518378
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5907617758822581692, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: m_LocalPosition.z
@@ -346,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152110305285706713, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -2.83
       objectReference: {fileID: 0}
     - target: {fileID: 5152110305285706713, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: m_LocalPosition.z
