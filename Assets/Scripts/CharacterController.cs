@@ -35,13 +35,24 @@ public class CharacterController : MonoBehaviour
 
     public UnityCustomEvent fireAtTarget;
 
+    private float HVelocity;
+    [SerializeField]
+    private float HAcceleration, HDeceleration, HMinSpeed, HMaxSpeed;
+
     private bool isLastInputNegative;
     private bool routineActive;
+    private bool moveUpdate;
+
+    private Vector3 PlayerInput;
+    private float LastPlayerInput;
+
+    private Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         characterController = GetComponent<Transform>();
+        _rb = GetComponent<Rigidbody2D>();
         savedCrosshair = Instantiate(crossHair, this.transform.position, Quaternion.identity);
     }
 
@@ -49,6 +60,11 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         Vector2 horizontalMovement = Vector2.right * Input.GetAxis("Horizontal");
+
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            moveUpdate = true;
+        }
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
@@ -69,6 +85,9 @@ public class CharacterController : MonoBehaviour
         }
 
         characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);
+        //GetMoveUpdate();
+        //Movement();
+        //_rb.MovePosition(transform.position + PlayerInput.normalized * HVelocity);
 
         moveCrossHair();
         rotateGunBarrel();
@@ -76,6 +95,36 @@ public class CharacterController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CoolDown(fireRate, fireAtTarget);
+        }
+    }
+    private void GetMoveUpdate()
+    {
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            moveUpdate = true;
+            PlayerInput = new Vector3(Input.GetAxis("Horizontal"), PlayerInput.y);
+        }
+        else
+        {
+            moveUpdate = false;
+        }
+    }
+    private void Movement()
+    {
+        //Horizontal Movement Controller
+        //Velocity Magnitude calculation
+        HVelocity += PlayerInput.magnitude * HAcceleration * Time.deltaTime;
+        HVelocity = Mathf.Clamp(HVelocity, HMinSpeed, HMaxSpeed);
+
+        if (PlayerInput.x != 0)
+        {
+            LastPlayerInput = PlayerInput.x;
+        }
+        //DeAccelerate
+        if (!moveUpdate)
+        {
+            HVelocity -= HDeceleration * Time.deltaTime;
+            HVelocity = Mathf.Clamp(HVelocity, HMinSpeed, HMaxSpeed);
         }
     }
 
