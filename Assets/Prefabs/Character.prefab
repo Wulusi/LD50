@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1352531992}
   - component: {fileID: 1352531991}
   - component: {fileID: 1352531990}
+  - component: {fileID: 1751400479}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -132,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.7}
+  m_Size: {x: 0.75, y: 0.7}
   m_EdgeRadius: 0.09
 --- !u!114 &1352531990
 MonoBehaviour:
@@ -152,7 +153,8 @@ MonoBehaviour:
   crossHair: {fileID: 7355055519186609272, guid: 8de98cfd6c1c5ad44979491465cee318, type: 3}
   projectile: {fileID: 3414959215937751588, guid: 43b180c08ea7bc2408b0a2f4810287b8, type: 3}
   gunBarrel: {fileID: 6001185464117707746}
-  fireRate: 2
+  fireRate: 0.25
+  animator: {fileID: 1751400479}
   fireAtTarget:
     m_PersistentCalls:
       m_Calls:
@@ -168,6 +170,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &1751400479
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152110305285706715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1066519f62ee1074cbf51f6e288c3fd3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6716361602022397660
 GameObject:
   m_ObjectHideFlags: 0

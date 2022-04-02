@@ -30,6 +30,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float fireRate;
 
+    [SerializeField]
+    private Animator animator;
+
     public UnityCustomEvent fireAtTarget;
 
     private bool isLastInputNegative;
@@ -54,6 +57,15 @@ public class CharacterController : MonoBehaviour
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             sprite.flipX = true;
+        }
+
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
         characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);

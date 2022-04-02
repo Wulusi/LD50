@@ -899,7 +899,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 659213109634967907, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: spawnCoolDown
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 659213109634967907, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: spawnDistance
@@ -967,17 +967,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1352531990, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
-      propertyPath: fireRate
-      value: 0.25
+      propertyPath: movementSpeed
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1352531991, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1352531991, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1751400479, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a8e73423aa23911488b6124e60aafe86, type: 2}
     - target: {fileID: 5152110305285706713, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: m_RootOrder
       value: 1
