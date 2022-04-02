@@ -35,11 +35,6 @@ public class CharacterController : MonoBehaviour
             sprite.flipX = true;
         }
 
-        if (Mathf.Sign(Input.GetAxis("Horizontal")) != 0 && Mathf.Sign(Input.GetAxis("Horizontal")) > 0)
-        {
-            isLastInputNegative = false;
-        }
-
         characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);
     }
 }
