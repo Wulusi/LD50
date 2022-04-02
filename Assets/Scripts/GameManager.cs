@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
             Instantiate(PlayerPrefab, new Vector3(0, -2.83f, 0), Quaternion.identity);
         }
 
+        if (isDebug && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         time = Time.time;
 
         timerDisplay.SetText(string.Format("Time:{0}", time.ToString("F2")));
