@@ -64,9 +64,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawnDistance: 9
+  spawnDistance: 20
   meteor: {fileID: 6550771886671921044, guid: 7d735338d8e31d749b72edb0df92d704, type: 3}
-  spawnCoolDown: 2
+  spawnCoolDown: 1
 --- !u!1001 &942731360527343170
 PrefabInstance:
   m_ObjectHideFlags: 0
