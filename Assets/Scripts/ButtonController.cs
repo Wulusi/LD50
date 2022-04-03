@@ -9,7 +9,12 @@ public class ButtonController : MonoBehaviour
     
     public void PlayButton()
     {
-        SceneManager.LoadScene("InstructionsScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ReplayButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitButton()
@@ -19,7 +24,7 @@ public class ButtonController : MonoBehaviour
 
     public void ContinueButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

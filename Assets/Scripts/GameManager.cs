@@ -37,9 +37,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CharacterController player;
 
+    bool isGameOver = false;
     // Start is called before the first frame update
     void Start()
     {
+        time = 0;
         scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
 
         player.onPlayerKilled += GameOverState;
@@ -68,18 +70,20 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        time = Time.time;
+        if (!isGameOver)
+        {
+            time += Time.deltaTime;
 
-        //timerDisplay.SetText(string.Format("Time: {0}"), time.ToString("F2")));
+            timerDisplay.SetText(string.Format("Time: {0}", time.ToString("F2")));
+        }
     }
 
     public void GameOverState()
     {
         if(GameOverScreen != null)
         {
-            Time.timeScale = 0;
-
-            scoreDisplayGameOVer.SetText(string.Format("Your score was: {0}, and you survived for {1} seconds!",
+            isGameOver = true;
+            scoreDisplayGameOVer.SetText(string.Format("Final score: {0}, Survived for {1} seconds!",
                 score.ToString(), time.ToString("F2")));
             GameOverScreen.SetActive(true);
         }
@@ -92,11 +96,13 @@ public class GameManager : MonoBehaviour
         if (score % 50 == 0)
         {
             meteorSpawner.decreaseSpawnCoolDown(0.025f);
+            player.changeFireRate(-.025f);
         }
 
         if(score % 250 == 0)
         {
             meteorSpawner.decreaseSpawnCoolDown(0.05f);
+            player.changeFireRate(-.05f);
         }
     }
 

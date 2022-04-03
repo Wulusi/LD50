@@ -188,4 +188,12 @@ public class CharacterController : MonoBehaviour
             fireAtTarget?.Invoke();
         }
     }
+
+    public void changeFireRate(float change)
+    {
+        if (fireRate >= 0.15f)
+        {
+            fireRate += change;
+        }
+    }
 }
