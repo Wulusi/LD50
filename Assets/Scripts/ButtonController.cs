@@ -9,12 +9,17 @@ public class ButtonController : MonoBehaviour
     
     public void PlayButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("InstructionsScene");
     }
 
     public void QuitButton()
     {
         Application.Quit();
     }
-    
+
+    public void ContinueButton()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
 }
