@@ -193,9 +193,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Use ''A'' and ''D'' to move your dinosaur
+  m_Text: 'Use ''A'' and ''D'' to move your dinosaur.
 
-    Aim with you mouse
+    Aim with you mouse.
 
     Use
     left click to shoot your dino laser! Pew pew!
