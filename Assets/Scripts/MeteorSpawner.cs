@@ -118,6 +118,19 @@ public class MeteorSpawner : MonoBehaviour
         }
     }
 
+    public void activateAutoDestroy()
+    {
+        foreach (GameObject tile in meteorSpawns)   
+        {
+            GroundTile tileScript = tile.GetComponent<GroundTile>();
+
+            if (tileScript != null)
+            {
+                tileScript.enableAutoDestroy();
+            }
+        }
+    }
+
     public void organizeTiles(GroundTile tile)
     {
         if (tile.isTileDestroyed() && !destroyedTiles.Contains(tile))

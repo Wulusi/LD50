@@ -109,6 +109,12 @@ public class GameManager : MonoBehaviour
         {
             meteorSpawner.increaseSpawnCount(1);
         }
+
+        ///Autodestroy on tiles
+        if (score > 5000)
+        {
+            meteorSpawner.activateAutoDestroy();
+        }
     }
 
     private void OnDestroy()

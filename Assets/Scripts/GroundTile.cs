@@ -12,6 +12,9 @@ public class GroundTile : MonoBehaviour
     private Collider2D blocker;
 
     [SerializeField]
+    GameObject autoDestroyTrigger;
+
+    [SerializeField]
     private SpriteRenderer sprite;
 
     [SerializeField]
@@ -29,17 +32,61 @@ public class GroundTile : MonoBehaviour
     private MeteorSpawner spawner;
     private bool isRoutineActive = false;
     private bool isDestroyed;
+    private bool startAutoDestroy;
     // Start is called before the first frame update
     void Start()
     {
         //isDebuggingMode = FindObjectOfType<GameManager>().isDebuggingEnabled();
         spawner = GetComponentInParent<MeteorSpawner>();
         cameraShake = FindObjectOfType<CameraShake>();
+        autoDestroyTrigger.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void enableAutoDestroy()
+    {
+        autoDestroyTrigger.SetActive(true);
+    }
+
+    public void startAutoDestroyTime()
+    {
+        startAutoDestroy = true;
+        StartCoroutine(autoDestroy());
+    }
+
+    public void disableAutoDestroy()
+    {
+        startAutoDestroy = false;
+    }
+    private IEnumerator autoDestroy()
+    {
+        float elapsedtime = 0;
+        Vector3 originalPos = this.transform.localScale;
+
+        while (startAutoDestroy)
+        {
+            elapsedtime += Time.deltaTime;
+
+            float x = Random.Range(0.7f, 1.1f);
+            float y = Random.Range(0.7f, 1.1f);
+
+            //Debug.LogWarning("elapsed time is " + elapsedtime + this.transform.name);
+
+            this.transform.localScale = new Vector3(originalPos.x, y, originalPos.z);
+
+            if (elapsedtime > 5)
+            {
+                groundTileHealth = 0;
+                CheckTile();
+            }
+
+            yield return null;
+        }
+        this.transform.localScale = originalPos;
     }
 
     public void CheckTile()

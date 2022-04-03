@@ -95,11 +95,30 @@ public class CharacterController : MonoBehaviour
         moveCrossHair();
         rotateGunBarrel();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             //CoolDown(fireRate, fireAtTarget);
+            //StartCoroutine(Shake(0.1f, 0.2f));
             FireBullet();
         }
+    }
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPos = gunBarrel.localPosition;
+
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = UnityEngine.Random.Range(-1, 1) * magnitude;
+            gunBarrel.localPosition = new Vector3(x, originalPos.y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        gunBarrel.localPosition = originalPos;
     }
     private void GetMoveUpdate()
     {
