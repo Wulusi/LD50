@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
     private int score;
 
     [SerializeField]
-    TextMeshProUGUI scoreDisplay;
+    TextMeshProUGUI scoreDisplay, scoreDisplayGameOVer;
 
     [SerializeField]
     private float time;
 
     [SerializeField]
-    TextMeshProUGUI timerDisplay;
+    TextMeshProUGUI timerDisplay, timerDisplayDisplayGameOVer;
     
     [SerializeField]
     private bool isDebug;
@@ -30,10 +30,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     MeteorSpawner meteorSpawner;
+
+    [SerializeField]
+    private float multiplier = 1;
+
+    [SerializeField]
+    private CharacterController player;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
+
+        player.onPlayerKilled += GameOverState;
 
         if (GameOverScreen != null)
         {
@@ -61,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         time = Time.time;
 
-        timerDisplay.SetText(string.Format("Time: {0}", time.ToString("F2")));
+        //timerDisplay.SetText(string.Format("Time: {0}"), time.ToString("F2")));
     }
 
     public void GameOverState()
@@ -69,6 +78,9 @@ public class GameManager : MonoBehaviour
         if(GameOverScreen != null)
         {
             Time.timeScale = 0;
+
+            scoreDisplayGameOVer.SetText(string.Format("Your score was: {0}, and you survived for {1} seconds!",
+                score.ToString(), time.ToString("F2")));
             GameOverScreen.SetActive(true);
         }
     }
@@ -76,5 +88,20 @@ public class GameManager : MonoBehaviour
     {
         score += 10;
         scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
+
+        if (score % 50 == 0)
+        {
+            meteorSpawner.decreaseSpawnCoolDown(0.025f);
+        }
+
+        if(score % 250 == 0)
+        {
+            meteorSpawner.decreaseSpawnCoolDown(0.05f);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        player.onPlayerKilled -= GameOverState;
     }
 }

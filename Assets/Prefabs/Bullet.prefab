@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 750
   rb: {fileID: 3929757849554151402}
+  destroyTimer: 5
 --- !u!50 &3929757849554151402
 Rigidbody2D:
   serializedVersion: 4

@@ -7,6 +7,9 @@ public class Meteor : MonoBehaviour
     [SerializeField]
     private int speed, lifeTime;
 
+    [SerializeField]
+    SpriteRenderer sprite;
+
     private float TimeStamp;
 
     [SerializeField]
@@ -46,10 +49,12 @@ public class Meteor : MonoBehaviour
         if (bonus == 1)
         {
             containsBonus = true;
+            sprite.enabled = false;
             specialMeteor1.SetActive(true);
         }
         else
         {
+            sprite.enabled = false;
             containsBonus2 = true;
             specialMeteor2.SetActive(true);
         }

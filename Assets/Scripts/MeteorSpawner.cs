@@ -20,12 +20,10 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     private float spawnCoolDown;
+    private float timeStamp = 0;
 
     [SerializeField]
-    private float bonusCooldown1, bonusCooldown2;
-
-    private float timeStamp = 0;
-    private float bonusTimeStamp1, bonusTimeStamp2;
+    private float normalSpawnChance, extraSpawnChance;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,21 +56,44 @@ public class MeteorSpawner : MonoBehaviour
         if (meteor != null)
         {
             GameObject fallingMeteor = Instantiate(meteor, spawnlocation, Quaternion.identity);
-            
-            if(bonusTimeStamp1 < Time.time)
+
+            if (RollDice())
             {
-                bonusTimeStamp1 = Time.time + bonusCooldown1;
                 fallingMeteor.GetComponent<Meteor>().setBonus(1);
             }
-
-            if (bonusTimeStamp2 < Time.time)
+            else if (RollDice2())
             {
-                bonusTimeStamp2 = Time.time + bonusCooldown2;
                 fallingMeteor.GetComponent<Meteor>().setBonus(2);
             }
         }
     }
 
+    bool RollDice()
+    {
+        int randomChance = Random.Range(0, 100);
+
+        if (randomChance < normalSpawnChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool RollDice2()
+    {
+        int randomChance = Random.Range(0, 100);
+
+        if (randomChance < extraSpawnChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void repairTile()
     {
         if (destroyedTiles.Count > 0)
@@ -88,10 +109,27 @@ public class MeteorSpawner : MonoBehaviour
         if (tile.isTileDestroyed() && !destroyedTiles.Contains(tile))
         {
             destroyedTiles.Add(tile);
+            caculateDiceChances();
         }
         else
         {
             destroyedTiles.Remove(tile);
+            caculateDiceChances();
+        }
+    }
+
+    private void caculateDiceChances()
+    {
+        normalSpawnChance = (float)destroyedTiles.Count / ((float)meteorSpawns.Count * 2f) * 100;
+
+        extraSpawnChance = (float)destroyedTiles.Count / ((float)meteorSpawns.Count * 4f) * 100;
+    }
+
+    public void decreaseSpawnCoolDown(float amount)
+    {
+        if (spawnCoolDown > 0.2)
+        {
+            spawnCoolDown -= amount;
         }
     }
 }

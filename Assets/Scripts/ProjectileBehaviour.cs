@@ -11,11 +11,15 @@ public class ProjectileBehaviour : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
 
+    [SerializeField]
+    private int destroyTimer;
+
     GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(delayDestroy());
     }
     
     public void setGM(GameManager _gm)
@@ -45,5 +49,11 @@ public class ProjectileBehaviour : MonoBehaviour
                 GM.IncreaseScore();
             }
         }
+    }
+
+    private IEnumerator delayDestroy()
+    {
+        yield return new WaitForSeconds(destroyTimer);
+        Destroy(gameObject);
     }
 }

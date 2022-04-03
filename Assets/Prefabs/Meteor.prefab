@@ -182,8 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2737add6be09144e82621e04211b6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 5
   lifeTime: 10
+  sprite: {fileID: 6550771886671921045}
   containsBonus: 0
   containsBonus2: 0
   specialMeteor1: {fileID: 7304552857995123084}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class UnityCustomEvent : UnityEngine.Events.UnityEvent
@@ -44,8 +45,9 @@ public class CharacterController : MonoBehaviour
     private Vector3 PlayerInput;
     private float LastPlayerInput;
     private Rigidbody2D _rb;
-
     private GameManager GM;
+
+    public event Action onPlayerKilled;
     // Start is called before the first frame update
     void Start()
     {
@@ -154,6 +156,7 @@ public class CharacterController : MonoBehaviour
 
     public void killPlayer()
     {
+        onPlayerKilled?.Invoke();
         Destroy(savedCrosshair);
         Destroy(gameObject);
     }
