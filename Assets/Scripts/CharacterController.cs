@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
     private GameObject savedCrosshair;
 
     [SerializeField]
-    private Transform gunBarrel;
+    private Transform gunBarrel, gunTip;
 
     [SerializeField]
     private float fireRate;
@@ -172,7 +172,7 @@ public class CharacterController : MonoBehaviour
     }
     public void ShootProjecTile()
     {
-        GameObject bullet = Instantiate(projectile, gunBarrel.transform.position, gunBarrel.transform.rotation);
+        GameObject bullet = Instantiate(projectile, gunTip.transform.position, gunTip.transform.rotation);
         bullet.GetComponent<ProjectileBehaviour>().setGM(GM);
     }
 
