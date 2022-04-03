@@ -96,22 +96,22 @@ public class GameManager : MonoBehaviour
         if (score % 50 == 0)
         {
             meteorSpawner.decreaseSpawnCoolDown(0.025f);
-            player.changeFireRate(-.025f);
+            player.changeFireRate(-.0125f);
         }
 
         if(score % 250 == 0)
         {
             meteorSpawner.decreaseSpawnCoolDown(0.05f);
-            player.changeFireRate(-.05f);
+            player.changeFireRate(-.025f);
         }
 
-        if(score % 400 == 0)
+        if(score % 300 == 0)
         {
             meteorSpawner.increaseSpawnCount(1);
         }
 
         ///Autodestroy on tiles
-        if (score > 5000)
+        //if (score > 5000)
         {
             meteorSpawner.activateAutoDestroy();
         }

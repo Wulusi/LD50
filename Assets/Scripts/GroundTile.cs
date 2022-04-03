@@ -61,6 +61,14 @@ public class GroundTile : MonoBehaviour
         StartCoroutine(autoDestroy());
     }
 
+    public void checkIfPlayerPresent()
+    {
+        if(startAutoDestroy)
+        {
+            StartCoroutine(autoDestroy());
+        }
+    }
+
     public void disableAutoDestroy()
     {
         startAutoDestroy = false;
@@ -75,7 +83,7 @@ public class GroundTile : MonoBehaviour
             elapsedtime += Time.deltaTime;
 
             float x = Random.Range(0.7f, 1.1f);
-            float y = Random.Range(0.7f, 1.1f);
+            float y = Random.Range(0.9f, 1.1f);
 
             //Debug.LogWarning("elapsed time is " + elapsedtime + this.transform.name);
 
@@ -83,10 +91,9 @@ public class GroundTile : MonoBehaviour
 
             if (elapsedtime > 5)
             {
-                groundTileHealth = 0;
-                CheckTile();
+                DamageGroundTile();
+                break;
             }
-
             yield return null;
         }
         this.transform.localScale = originalPos;
@@ -149,6 +156,7 @@ public class GroundTile : MonoBehaviour
             DamagedTileSprite.SetActive(true);
         }
         CheckTile();
+        checkIfPlayerPresent();
     }
     private IEnumerator autoRestore()
     {

@@ -30,6 +30,8 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     private AudioSource meteorDestroySound, BonusSound;
+
+    private int level;
     // Start is called before the first frame update
     void Start()
     {
@@ -173,11 +175,33 @@ public class MeteorSpawner : MonoBehaviour
         BonusSound.Play();
     }
 
-    public void increaseSpawnCount(int amount)
+    public void increaseSpawnCount(int spawnlevel)
     {
-        if (numberOfSpawns <= 5)
+        level += spawnlevel;
+
+        if(level >= 1 && level < 5)
         {
-            numberOfSpawns += amount;
+            numberOfSpawns += 1;
+        }
+
+        if(level >= 5 && level < 10)
+        {
+            numberOfSpawns += 1;
+        }
+
+        if (level >= 10 && level < 15)
+        {
+            numberOfSpawns += 1;
+        }
+
+        if (level >= 15)
+        {
+            numberOfSpawns += 1;
+        }
+
+        if(numberOfSpawns > 7)
+        {
+            numberOfSpawns = 7;
         }
     }
 }
