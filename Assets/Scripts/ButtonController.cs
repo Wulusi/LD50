@@ -7,7 +7,7 @@ public class ButtonController : MonoBehaviour
 {
     private void Start()
     {
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void PlayButton()
@@ -18,6 +18,7 @@ public class ButtonController : MonoBehaviour
 
     public void ReplayButton()
     {
+        this.GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

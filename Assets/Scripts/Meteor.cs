@@ -17,6 +17,9 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     GameObject specialMeteor1, specialMeteor2;
+
+    [SerializeField]
+    AudioSource meteorDestroy;
     void Start()
     {
         TimeStamp = Time.time + lifeTime;
@@ -80,6 +83,8 @@ public class Meteor : MonoBehaviour
     }
     public void DestroyMeteor()
     {
+        meteorDestroy.Play();
+
         if (containsBonus)
         {
             MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();

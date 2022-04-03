@@ -29,6 +29,9 @@ public class GroundTile : MonoBehaviour
     [SerializeField]
     CameraShake cameraShake;
 
+    [SerializeField]
+    private AudioSource groundHit;
+
     private MeteorSpawner spawner;
     private bool isRoutineActive = false;
     private bool isDestroyed;
@@ -134,6 +137,7 @@ public class GroundTile : MonoBehaviour
     public void DamageGroundTile()
     {
         groundTileHealth--;
+        groundHit.Play();
 
         if (cameraShake != null)
         {

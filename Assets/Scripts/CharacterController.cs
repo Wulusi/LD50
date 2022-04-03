@@ -39,6 +39,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float HAcceleration, HDeceleration, HMinSpeed, HMaxSpeed;
 
+    [SerializeField]
+    private AudioSource laserFire;
+
     private bool isLastInputNegative;
     private bool routineActive;
     private bool moveUpdate;
@@ -204,6 +207,7 @@ public class CharacterController : MonoBehaviour
         if (fireTimer < Time.time)
         {
             fireTimer = Time.time + fireRate;
+            laserFire.Play();
             fireAtTarget?.Invoke();
         }
     }
