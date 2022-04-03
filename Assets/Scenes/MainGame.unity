@@ -1639,6 +1639,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!212 &1942149478 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 292804333599366306, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
+  m_PrefabInstance: {fileID: 5152110306636403662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1949607214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +2498,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1352531990, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
+      propertyPath: arm
+      value: 
+      objectReference: {fileID: 1942149478}
+    - target: {fileID: 1352531990, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: fireRate
       value: 0.35
       objectReference: {fileID: 0}
@@ -2575,6 +2584,10 @@ PrefabInstance:
     - target: {fileID: 5152110305285706715, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956660143982398259, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7844f13f681176548b6882e8bee73f3b, type: 3}

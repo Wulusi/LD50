@@ -16,7 +16,7 @@ public class CharacterController : MonoBehaviour
     private int movementSpeed;
 
     [SerializeField]
-    SpriteRenderer sprite;
+    SpriteRenderer sprite, arm;
 
     [SerializeField]
     private GameObject crossHair, projectile;
@@ -74,10 +74,12 @@ public class CharacterController : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             sprite.flipX = false;
+            arm.flipX = false;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             sprite.flipX = true;
+            arm.flipX = true;
         }
 
         if (Input.GetAxisRaw("Horizontal") != 0)
