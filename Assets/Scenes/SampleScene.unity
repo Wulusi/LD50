@@ -944,6 +944,14 @@ PrefabInstance:
       propertyPath: spawnDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 659213109634967907, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: bonusCooldown1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 659213109634967907, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
+      propertyPath: bonusCooldown2
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 942731358575348275, guid: 12d01d777c3a37c46a6eed550edd9730, type: 3}
       propertyPath: m_SortingOrder
       value: 2

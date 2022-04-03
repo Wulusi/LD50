@@ -41,6 +41,19 @@ public class Meteor : MonoBehaviour
             Destroy(this);
         }
     }
+    public void setBonus(int bonus)
+    {
+        if (bonus == 1)
+        {
+            containsBonus = true;
+            specialMeteor1.SetActive(true);
+        }
+        else
+        {
+            containsBonus2 = true;
+            specialMeteor2.SetActive(true);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,6 +78,14 @@ public class Meteor : MonoBehaviour
         if (containsBonus)
         {
             MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();
+            spawner.repairTile();
+        }
+
+        if(containsBonus2)
+        {
+            MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();
+            spawner.repairTile();
+            spawner.repairTile();
             spawner.repairTile();
         }
 

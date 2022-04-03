@@ -20,7 +20,12 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     private float spawnCoolDown;
+
+    [SerializeField]
+    private float bonusCooldown1, bonusCooldown2;
+
     private float timeStamp = 0;
+    private float bonusTimeStamp1, bonusTimeStamp2;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +57,19 @@ public class MeteorSpawner : MonoBehaviour
 
         if (meteor != null)
         {
-            Instantiate(meteor, spawnlocation, Quaternion.identity);
+            GameObject fallingMeteor = Instantiate(meteor, spawnlocation, Quaternion.identity);
+            
+            if(bonusTimeStamp1 < Time.time)
+            {
+                bonusTimeStamp1 = Time.time + bonusCooldown1;
+                fallingMeteor.GetComponent<Meteor>().setBonus(1);
+            }
+
+            if (bonusTimeStamp2 < Time.time)
+            {
+                bonusTimeStamp2 = Time.time + bonusCooldown2;
+                fallingMeteor.GetComponent<Meteor>().setBonus(2);
+            }
         }
     }
 
