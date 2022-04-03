@@ -27,6 +27,9 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     private int numberOfSpawns = 2;
+
+    [SerializeField]
+    private AudioSource meteorDestroySound, BonusSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -158,6 +161,16 @@ public class MeteorSpawner : MonoBehaviour
         {
             spawnCoolDown -= amount;
         }
+    }
+
+    public void PlayDestroyedSound()
+    {
+        meteorDestroySound.Play();
+    }
+
+    public void PlayBonusSound()
+    {
+        BonusSound.Play();
     }
 
     public void increaseSpawnCount(int amount)

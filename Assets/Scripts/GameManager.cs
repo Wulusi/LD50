@@ -37,9 +37,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CharacterController player;
 
-    [SerializeField]
-    AudioSource meteorDestroy;
-
     bool isGameOver = false;
     // Start is called before the first frame update
     void Start()
@@ -94,7 +91,6 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         score += 10;
-        meteorDestroy.Play();
         scoreDisplayText.text = string.Format("Score: {0}", score.ToString());
 
         if (score % 50 == 0)

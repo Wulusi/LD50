@@ -80,18 +80,26 @@ public class Meteor : MonoBehaviour
     }
     public void DestroyMeteor()
     {
+        MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();
+
         if (containsBonus)
         {
-            MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();
+            
+            spawner.PlayBonusSound();
             spawner.repairTile();
         }
 
         if(containsBonus2)
         {
-            MeteorSpawner spawner = FindObjectOfType<MeteorSpawner>();
+            spawner.PlayBonusSound();
             spawner.repairTile();
             spawner.repairTile();
             spawner.repairTile();
+        }
+
+        if(!containsBonus || !containsBonus2)
+        {
+            spawner.PlayDestroyedSound();
         }
 
         Destroy(gameObject);
