@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -102}
+  m_AnchoredPosition: {x: 0, y: -161.5}
   m_SizeDelta: {x: 520.4114, y: 134.3864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116931697
@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -292}
+  m_AnchoredPosition: {x: 0, y: -355.5}
   m_SizeDelta: {x: 353.3506, y: 249.58862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348128794
@@ -467,8 +467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 125}
-  m_SizeDelta: {x: 446.0072, y: 134.3864}
+  m_AnchoredPosition: {x: 0, y: 88.29187}
+  m_SizeDelta: {x: 446.0072, y: 207.8027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755119443
 MonoBehaviour:
@@ -508,7 +508,11 @@ MonoBehaviour:
 
     Help the last dinosaur
     hold off the impending apocalypse as long as you can by destroying the incoming
-    meteorites!'
+    meteorites!
+
+
+    Watch out, don''t stand in one place for too long or the land
+    will sink into the lava!'
 --- !u!222 &755119444
 CanvasRenderer:
   m_ObjectHideFlags: 0
