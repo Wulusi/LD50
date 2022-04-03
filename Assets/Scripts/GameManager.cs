@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver)
         {
             time += Time.deltaTime;
-            timeDisplayText.text = string.Format("Time: {0}", time.ToString("F2"));
+            timeDisplayText.text = string.Format("Time: {0}", time.ToString("F1"));
         }
     }
 
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             player.changeFireRate(-.05f);
         }
 
-        if(score % 300 == 0)
+        if(score % 400 == 0)
         {
             meteorSpawner.increaseSpawnCount(1);
         }
