@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
+    private void Start()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+    }
 
-    
     public void PlayButton()
     {
+        this.GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
