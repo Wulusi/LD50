@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
     private int score;
 
     [SerializeField]
-    TextMeshProUGUI scoreDisplay, scoreDisplayGameOVer;
+    TextMeshProUGUI scoreDisplayGameOver, scoreDisplayGameOver2;
+
+    [SerializeField]
+    TextMesh scoreDisplayText, timeDisplayText; 
 
     [SerializeField]
     private float time;
-
-    [SerializeField]
-    TextMeshProUGUI timerDisplay, timerDisplayDisplayGameOVer;
     
     [SerializeField]
     private bool isDebug;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         time = 0;
-        scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
+        scoreDisplayText.text = (string.Format("Score: {0}", score.ToString()));
 
         player.onPlayerKilled += GameOverState;
 
@@ -73,8 +73,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver)
         {
             time += Time.deltaTime;
-
-            timerDisplay.SetText(string.Format("Time: {0}", time.ToString("F2")));
+            timeDisplayText.text = string.Format("Time: {0}", time.ToString("F2"));
         }
     }
 
@@ -83,15 +82,16 @@ public class GameManager : MonoBehaviour
         if(GameOverScreen != null)
         {
             isGameOver = true;
-            scoreDisplayGameOVer.SetText(string.Format("Final score: {0}, Survived for {1} seconds!",
-                score.ToString(), time.ToString("F2")));
+            Cursor.visible = true;
+            scoreDisplayGameOver.SetText(string.Format("Final score: {0}", score.ToString()));
+            scoreDisplayGameOver2.SetText(string.Format("Survived for {0} seconds!", time.ToString("F2")));
             GameOverScreen.SetActive(true);
         }
     }
     public void IncreaseScore()
     {
         score += 10;
-        scoreDisplay.SetText(string.Format("Score: {0}", score.ToString()));
+        scoreDisplayText.text = string.Format("Score: {0}", score.ToString());
 
         if (score % 50 == 0)
         {
@@ -103,6 +103,11 @@ public class GameManager : MonoBehaviour
         {
             meteorSpawner.decreaseSpawnCoolDown(0.05f);
             player.changeFireRate(-.05f);
+        }
+
+        if(score % 300 == 0)
+        {
+            meteorSpawner.increaseSpawnCount(1);
         }
     }
 

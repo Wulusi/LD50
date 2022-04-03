@@ -24,6 +24,9 @@ public class MeteorSpawner : MonoBehaviour
 
     [SerializeField]
     private float normalSpawnChance, extraSpawnChance;
+
+    [SerializeField]
+    private int numberOfSpawns = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,30 +45,41 @@ public class MeteorSpawner : MonoBehaviour
         if (timeStamp < Time.time)
         {
             timeStamp = Time.time + spawnCoolDown;
-            SpawnMeteorsSequence();
+            SpawnMeteorsSequence(numberOfSpawns);
         }
     }
-    void SpawnMeteorsSequence()
+    void SpawnMeteorsSequence(int spawnAmount)
     {
-        canSpawn = false;
 
-        int randomSpawn = Random.Range(0, meteorSpawns.Count);
-
-        Vector3 spawnlocation = meteorSpawns[randomSpawn].transform.position + new Vector3(0, spawnDistance);
-
-        if (meteor != null)
+        for (int i = 0; i < spawnAmount; i++)
         {
-            GameObject fallingMeteor = Instantiate(meteor, spawnlocation, Quaternion.identity);
+            canSpawn = false;
 
-            if (RollDice())
+            int randomSpawn = Random.Range(0, meteorSpawns.Count);
+
+            int spawnOffset = Random.Range(0, 5);
+
+            Vector3 spawnlocation = meteorSpawns[randomSpawn].transform.position + new Vector3(0, spawnDistance + spawnOffset);
+
+            if (meteor != null)
             {
-                fallingMeteor.GetComponent<Meteor>().setBonus(1);
-            }
-            else if (RollDice2())
-            {
-                fallingMeteor.GetComponent<Meteor>().setBonus(2);
+                GameObject fallingMeteor = Instantiate(meteor, spawnlocation, Quaternion.identity);
+
+                if (RollDice())
+                {
+                    fallingMeteor.GetComponent<Meteor>().setBonus(1);
+                }
+                else if (RollDice2())
+                {
+                    fallingMeteor.GetComponent<Meteor>().setBonus(2);
+                }
             }
         }
+    }
+
+    private IEnumerator waitRoutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
     }
 
     bool RollDice()
@@ -130,6 +144,14 @@ public class MeteorSpawner : MonoBehaviour
         if (spawnCoolDown > 0.2)
         {
             spawnCoolDown -= amount;
+        }
+    }
+
+    public void increaseSpawnCount(int amount)
+    {
+        if (numberOfSpawns <= 5)
+        {
+            numberOfSpawns += amount;
         }
     }
 }
