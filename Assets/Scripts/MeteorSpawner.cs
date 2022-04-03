@@ -8,6 +8,9 @@ public class MeteorSpawner : MonoBehaviour
     List<GameObject> meteorSpawns = new List<GameObject>();
 
     [SerializeField]
+    List<GroundTile> destroyedTiles = new List<GroundTile>();
+
+    [SerializeField]
     private int spawnDistance;
 
     private bool canSpawn;
@@ -22,6 +25,7 @@ public class MeteorSpawner : MonoBehaviour
     void Start()
     {
         meteorSpawns.Clear();
+        destroyedTiles.Clear();
 
         int numOfChildren = this.transform.childCount;
 
@@ -30,8 +34,6 @@ public class MeteorSpawner : MonoBehaviour
             meteorSpawns.Add(this.transform.GetChild(i).gameObject);
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (timeStamp < Time.time)
@@ -40,7 +42,6 @@ public class MeteorSpawner : MonoBehaviour
             SpawnMeteorsSequence();
         }
     }
-
     void SpawnMeteorsSequence()
     {
         canSpawn = false;
@@ -49,9 +50,31 @@ public class MeteorSpawner : MonoBehaviour
 
         Vector3 spawnlocation = meteorSpawns[randomSpawn].transform.position + new Vector3(0, spawnDistance);
 
-        if(meteor != null)
+        if (meteor != null)
         {
             Instantiate(meteor, spawnlocation, Quaternion.identity);
+        }
+    }
+
+    public void repairTile()
+    {
+        if (destroyedTiles.Count > 0)
+        {
+            GroundTile randomizedTile = destroyedTiles[Random.Range(0, destroyedTiles.Count)];
+
+            randomizedTile.ResetGroundTile();
+        }
+    }
+
+    public void organizeTiles(GroundTile tile)
+    {
+        if (tile.isTileDestroyed() && !destroyedTiles.Contains(tile))
+        {
+            destroyedTiles.Add(tile);
+        }
+        else
+        {
+            destroyedTiles.Remove(tile);
         }
     }
 }

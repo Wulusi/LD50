@@ -31,7 +31,6 @@ public class ProjectileBehaviour : MonoBehaviour
         if (rb != null)
             rb.velocity = transform.right * (projectileSpeed * Time.fixedDeltaTime);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Meteor bulletTarget = collision.GetComponent<Meteor>();
