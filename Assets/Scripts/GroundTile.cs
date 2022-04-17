@@ -36,6 +36,16 @@ public class GroundTile : MonoBehaviour
     private bool isRoutineActive = false;
     private bool isDestroyed;
     private bool startAutoDestroy;
+
+    [SerializeField]
+    private Color normalTile;
+    [SerializeField]
+    private Color warningTile;
+    [SerializeField]
+    private float tileColourLerpSpd;
+
+    [SerializeField]
+    List<SpriteRenderer> tileSprites = new List<SpriteRenderer>();
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +82,11 @@ public class GroundTile : MonoBehaviour
     public void disableAutoDestroy()
     {
         startAutoDestroy = false;
+
+        foreach (SpriteRenderer SR in tileSprites)
+        {
+            SR.color = normalTile;
+        }
     }
     private IEnumerator autoDestroy()
     {
@@ -81,6 +96,13 @@ public class GroundTile : MonoBehaviour
         while (startAutoDestroy)
         {
             elapsedtime += Time.deltaTime;
+
+            //Use colour indication as well here
+
+            foreach(SpriteRenderer SR in tileSprites)
+            {
+                SR.color = Color.Lerp(normalTile, warningTile, Mathf.PingPong(Time.time * tileColourLerpSpd, 1.0f));
+            }
 
             float x = Random.Range(0.7f, 1.1f);
             float y = Random.Range(0.9f, 1.1f);

@@ -10,10 +10,10 @@ public class UnityCustomEvent : UnityEngine.Events.UnityEvent
 public class CharacterController : MonoBehaviour
 {
     [SerializeField]
-    private Transform characterController;
+    private Transform characterController, feetPosition;
 
     [SerializeField]
-    private int movementSpeed;
+    private int movementSpeed, jumpForce;
 
     [SerializeField]
     SpriteRenderer sprite, arm;
@@ -51,6 +51,17 @@ public class CharacterController : MonoBehaviour
     private GameManager GM;
 
     public event Action onPlayerKilled;
+
+    Vector2 horizontalMovement;
+    [SerializeField]
+    private float jumpCircleRadius;
+    [SerializeField]
+    bool isGrounded;
+    private float jumpTimeCounter;
+    public float jumpTime;
+    public bool isJumping;
+
+    public LayerMask m_LayerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +75,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 horizontalMovement = Vector2.right * Input.GetAxis("Horizontal");
+        horizontalMovement = Vector2.right * Input.GetAxis("Horizontal");
 
         if (Input.GetAxis("Horizontal") != 0)
         {
@@ -91,7 +102,6 @@ public class CharacterController : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);
 
         //GetMoveUpdate();
         //Movement();
@@ -106,6 +116,49 @@ public class CharacterController : MonoBehaviour
             //StartCoroutine(Shake(0.1f, 0.2f));
             FireBullet();
         }
+
+        //For Vertical Variable Jump
+        isGrounded = Physics2D.OverlapCircle(feetPosition.position, jumpCircleRadius, m_LayerMask);
+
+        Debug.Log("Grounded: " + isGrounded);
+
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
+            _rb.velocity = Vector2.up * jumpForce;
+            animator.speed = 4.0f;
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isJumping == true)
+        {
+            if(jumpTimeCounter > 0)
+            {
+                _rb.velocity = Vector2.up * jumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            } else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+            animator.speed = 1.0f;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(feetPosition.position, jumpCircleRadius);
+    }
+
+    private void FixedUpdate()
+    {
+        characterController.Translate(horizontalMovement * movementSpeed * Time.deltaTime, Space.World);
+        _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y);
     }
     public IEnumerator Shake(float duration, float magnitude)
     {

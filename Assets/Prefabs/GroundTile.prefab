@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3392077473809109088}
   - component: {fileID: 4401302826030451861}
   - component: {fileID: 7240825962929947356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,12 @@ MonoBehaviour:
   DamagedTileSprite: {fileID: 8579638669096252952}
   cameraShake: {fileID: 0}
   groundHit: {fileID: 7240825962929947356}
+  normalTile: {r: 1, g: 1, b: 1, a: 1}
+  warningTile: {r: 1, g: 0.3339622, b: 0.36269343, a: 1}
+  tileColourLerpSpd: 3
+  tileSprites:
+  - {fileID: 3392077473809109118}
+  - {fileID: 3701118834210061501}
 --- !u!82 &7240825962929947356
 AudioSource:
   m_ObjectHideFlags: 0
@@ -264,7 +270,7 @@ GameObject:
   - component: {fileID: 7529072994137156717}
   - component: {fileID: 7356283543828088831}
   - component: {fileID: 4552834297680218703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AutoDestroyTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e3a60ce080d5b4fb104123a7736245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
+  tile: {fileID: 4401302826030451861}
 --- !u!1 &8579638669096252952
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4450972337659073486}
   - component: {fileID: 3701118834210061501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HalfHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}

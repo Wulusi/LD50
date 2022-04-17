@@ -44,6 +44,8 @@ public class MeteorSpawner : MonoBehaviour
         {
             meteorSpawns.Add(this.transform.GetChild(i).gameObject);
         }
+
+        activateAutoDestroy();
     }
     void Update()
     {
